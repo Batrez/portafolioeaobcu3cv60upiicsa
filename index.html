@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Portafolio evidencias CU3CV60</title>
+   <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+   <a class="navbar-brand" href="#">Portafolio de evidencias</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+            <a class="nav-link" href="#">3CV60 <span class="sr-only">(current)</span></a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="#">Computación Ubicua</a>
+         </li>
+      </ul>
+   </div>
+</nav>
+
+   <section class="container">
+         <h1>Portafolio de evidencias <b>Computación Ubicua 3CV60</b></h1>
+
+      <h2>Alumno: Ortiz Batrez Erick Armando</h2>
+      <div class="card-body" style="width: fit-content">
+         <table class="table table-striped">
+            <thead>
+               <th>#</th>
+               <th>Nombre</th>
+               <th>Evidencia</th>
+            </thead>
+            <tbody id="hwBody">
+
+            </tbody>
+         </table>
+      </div>
+   </section>
+</body>
+
+   <script type="application/javascript" src="js/jquery-3.5.1.min.js"></script>
+   <script type="application/javascript" src="js/bootstrap.bundle.js"></script>
+
+   <script type="application/javascript">
+      $(document).ready(function () {
+        let html;
+
+        let tarea_nombre = ['',
+          'RFID (Mapa mental)',
+          '<b>Exposición 1: Evolución del software</b>',
+          'Historia de las cosas (Ensayo)',
+          'La tercera revolución industrial',
+          '<b>Exposición 2: Servicios en la nube. PaaS</b>',
+          '¿Qué es BPM? y ¿Cómo se involucran en los ambientes ubicuos? (Mapa mental)',
+          '¿Qué es una arquitectura basada en la nube? (Mapa conceptual)',
+          '¿Qué es el análisis de datos en tiempo real? (Ensayo)',
+          '<b>Proyecto final: Pulsera Médica</b>',
+          '¿Qué es el big data?',
+          '¿Qué es la minería de datos? (Ensayo)'
+        ];
+
+        let video = [];
+
+        video[2] = 'https://www.youtube.com/embed/R_jLAreUIzU';
+
+        video[5] = 'https://www.youtube.com/embed/lUVRznA8ycg';
+
+        video[9] = 'https://www.youtube.com/embed/YsEGnCvz2bI';
+
+         for (let i=1;i<=11;i++) {
+
+           html+='<tr>' +
+             '                  <td>'+i+'</td>' +
+             '                  <td>'+tarea_nombre[i]+'</td>' +
+             '                  <td>' +
+             '                     <div class="row col-md-12">' +
+             '                        <button class="btn btn-success" id="btnView'+i+'" onclick="showWork('+i+')">' +
+             '                           Ver' +
+             '                        </button>' +
+             '                        <button style="display: none;" class="btn btn-warning" id="btnHide'+i+'" onclick="hideWork('+i+')">' +
+             '                           Ocultar' +
+             '                        </button>' +
+             '                     </div>' +
+             ''+
+             '                     <embed class="hw'+i+'" src="docs/'+i+'.pdf" width="900" height="500"' +
+             '                             type="application/pdf" style="display: none;">' +
+             '';
+
+             if(i === 2 || i === 5 || i === 9) {
+               html+=
+                 '<embed class="hw'+i+'" src="docs/'+i+'-1.pdf" width="900" height="500" ' +
+                 'type="application/pdf" style="display: none;">' +
+                 ''+
+                 '<iframe class="hw'+i+'" width="900" height="500"' +
+                 '                             src="'+video[i]+'" style="display: none;">' +
+                 '                     </iframe>'
+             }
+
+             html+='                  </td>' +
+             '               </tr>';
+         }
+
+         $('#hwBody').append(html);
+      });
+
+      function showWork(id)
+      {
+        $('#btnView'+id).hide('slow');
+        $('.hw'+id).show('slow');
+        $('#btnHide'+id).show('slow');
+      }
+
+      function hideWork(id)
+      {
+        $('#btnHide'+id).hide('slow');
+        $('.hw'+id).hide('slow');
+        $('#btnView'+id).show('slow');
+      }
+
+   </script>
+
+</html>
